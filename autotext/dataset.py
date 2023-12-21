@@ -65,7 +65,7 @@ class TextDataset:
         """
         train, val, test = self._generate_train_val_test_sets(*args)
         self._dataset = DatasetDict({
-            'train': Dataset.from_pandas(train),
-            'validation': Dataset.from_pandas(val),
-            'test': Dataset.from_pandas(test),
+            'train': Dataset.from_pandas(train.reset_index(drop=True)),
+            'validation': Dataset.from_pandas(val.reset_index(drop=True)),
+            'test': Dataset.from_pandas(test.reset_index(drop=True)),
         })
