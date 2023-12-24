@@ -69,3 +69,7 @@ class TextDataset:
             'validation': Dataset.from_pandas(val.reset_index(drop=True)),
             'test': Dataset.from_pandas(test.reset_index(drop=True)),
         })
+
+    @property
+    def dataset(self):
+        return self._dataset
