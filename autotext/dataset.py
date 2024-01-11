@@ -18,6 +18,9 @@ class TextDataset:
 
         self._text_col = text_col
         self._target_col = target_col
+        self._id2label = dict(enumerate(df[target_col].unique()))
+        self._label2id = {v: k for k, v in self._id2label.items()}
+        self._num_labels = len(self._id2label)
 
         self._create_hf_dataset(df, train_set_size, val_set_size, test_set_size)
 
@@ -73,3 +76,15 @@ class TextDataset:
     @property
     def dataset(self):
         return self._dataset
+
+    @property
+    def num_labels(self):
+        return self._num_labels
+
+    @property
+    def id2label(self):
+        return self._id2label
+
+    @property
+    def label2id(self):
+        return self._label2id
